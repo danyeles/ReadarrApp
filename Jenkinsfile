@@ -8,8 +8,9 @@ pipeline {
         PGID = '1000'
         UMASK = '002'
         TZ = 'Etc/UTC'
-        CONFIG_PATH = '/<host_folder_config>' // Replace with your host config folder
-        DATA_PATH = '/<host_folder_data>' // Replace with your host data folder
+        CONFIG_PATH = '/home/docker/readarr/config'
+        BOOKS_PATH = '/mnt/Media/Books'
+        DOWNLOADS_PATH = '/mnt/Media/Downloads'
     }
 
     stages {
@@ -25,7 +26,8 @@ pipeline {
                         -e UMASK=${UMASK} \
                         -e TZ=${TZ} \
                         -v ${CONFIG_PATH}:/config \
-                        -v ${DATA_PATH}:/data \
+                        -v ${BOOKS_PATH}:/data \
+                        -v ${DOWNLOADS_PATH}:/downloads \
                         ${DOCKER_IMAGE}
                     """
                 }
