@@ -18,7 +18,8 @@ pipeline {
             steps {
                 script {
                     sh """
-                    docker run --rm \
+                    docker run -d \
+                        --restart always \
                         --name ${CONTAINER_NAME} \
                         -p 2727:2727 \
                         -e PUID=${PUID} \
