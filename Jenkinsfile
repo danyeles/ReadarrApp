@@ -8,6 +8,7 @@ pipeline {
         PGID = '1000'
         UMASK = '002'
         TZ = 'America/Monterrey'
+        WEBUI_PORTS = '2727/tcp,2727/udp'
         CONFIG_PATH = '/home/docker/readarr/config'
         BOOKS_PATH = '/mnt/Media/Books'
         DOWNLOADS_PATH = '/mnt/Media/Downloads'
@@ -26,6 +27,7 @@ pipeline {
                         -e PGID=${PGID} \
                         -e UMASK=${UMASK} \
                         -e TZ=${TZ} \
+                        -e WEBUI_PORTS=${WEBUI_PORTS} \
                         -v ${CONFIG_PATH}:/config \
                         -v ${BOOKS_PATH}:/Books \
                         -v ${DOWNLOADS_PATH}:/downloads \
