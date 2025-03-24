@@ -9,8 +9,7 @@ pipeline {
         UMASK = '002'
         TZ = 'Etc/UTC'
         CONFIG_PATH = '/home/docker/readarr/config'
-        BOOKS_PATH = '/mnt/Media/Books'
-        DOWNLOADS_PATH = '/mnt/Media/Downloads'
+        USERNAME = sh(script: 'echo $USER', returnStdout: true).trim()  
     }
 
     stages {
@@ -27,8 +26,8 @@ pipeline {
                         -e UMASK=${UMASK} \
                         -e TZ=${TZ} \
                         -v ${CONFIG_PATH}:/config \
-                        -v ${BOOKS_PATH}:/data \
-                        -v ${DOWNLOADS_PATH}:/downloads \
+                        -v /media/${USERNAME}/Media/Books:/data \
+                        -v /media/${USERNAME}/Media/Downloads:/downloads \
                         ${DOCKER_IMAGE}
                     """
                 }
