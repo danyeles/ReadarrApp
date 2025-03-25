@@ -26,8 +26,8 @@ pipeline {
                         -e UMASK=${UMASK} \
                         -e TZ=${TZ} \
                         -v ${CONFIG_PATH}:/config \
-                        -v /media/${USERNAME}/Media/Books:/data \
-                        -v /media/${USERNAME}/Media/Downloads:/downloads \
+                        -v /media/Media/Books:/data \
+                        -v /media/Media/Downloads:/downloads \
                         ${DOCKER_IMAGE}
                     """
                 }
